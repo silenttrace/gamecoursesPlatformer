@@ -5,6 +5,9 @@ public class Player : MonoBehaviour
     [Range(0.0f, 5.0f)]
     [SerializeField] float speed = 1.0f;
 
+    [Range(75.0f, 300.0f)]
+    [SerializeField] float jumpForce = 100.0f;
+
     private void Update()
     {
         float horizontal = Input.GetAxis("Horizontal") * speed;
@@ -20,6 +23,11 @@ public class Player : MonoBehaviour
         {
             var spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.flipX = horizontal < 0;
+        }
+
+        if (Input.GetButtonDown("Fire1")) 
+        {
+            rigidbody2D.AddForce(Vector2.up * jumpForce);
         }
     }
 }
