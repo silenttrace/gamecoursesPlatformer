@@ -11,5 +11,9 @@ public class Player : MonoBehaviour
         var rigidbody2D = GetComponent<Rigidbody2D>();
         // we don't want to change y velocity outside of gravity or jump so leave it as it was.
         rigidbody2D.velocity = new Vector2(horizontal, rigidbody2D.velocity.y);
+
+        var animator = GetComponent<Animator>();
+        bool walking = horizontal != 0;
+        animator.SetBool("Walk", walking);
     }
 }
